@@ -1,6 +1,6 @@
 {  
-  "name": "Service Worker Debugging Demo",  
-  "short_name": "SW Debug",  
+  "name": "Kate Sky PWA",  
+  "short_name": "PWA",  
   "icons": [{  
         "src": "images/icons/smiley-192x192.png",  
         "sizes": "192x192",
