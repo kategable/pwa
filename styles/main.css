@@ -12,7 +12,7 @@ html, body {
 header {
   height: 56px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  background: #D81B60;
+  background: rgb(27, 216, 184);
   color: #FFFFFF;
   display: flex;
   align-items: center;
