@@ -1,4 +1,4 @@
-
+'use strict'
 // Register Service Worker
 
 if('serviceWorker' in navigator) {
@@ -51,3 +51,4 @@ function subscribe() {
       });
   });
 }
+
