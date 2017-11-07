@@ -1,12 +1,19 @@
-'use strict'
-var CACHE_NAME = 'my-site-cache-v1';
+
+var CACHE_NAME = 'my-site-cache-v2';
 var urlsToCache = [
     '/pwa',
+    '/pwa/index.html',
     '/pwa/styles/main.css',
     '/pwa/scripts/main.js',
     '/pwa/scripts/app.js',
-    '/pwa/images/smiley.svg'
+    '/pwa/images/smiley.svg',
+    '/pwa/android-chrome-144x144.png',
+    '/pwa/favicon.ico',
+    '/pwa/scripts/app.js',
+    'https://unpkg.com/vue',
+    '/pwa/data/data.json'
 ];
+ 
 
 self.addEventListener('install', function (event) {
 
@@ -19,20 +26,31 @@ self.addEventListener('install', function (event) {
     );
 });
 
-self.addEventListener('activate', function (event) {
-    console.log('Finally active. Ready to start serving content!');
+self.addEventListener('activate', function (e) {
+    console.log('[ServiceWorker] Activate');
+    e.waitUntil(
+        caches.keys().then(function (keyList) {
+            return Promise.all(keyList.map(function (key) {
+                if (key !== CACHE_NAME) {
+                    console.log('[ServiceWorker] Removing old cache', key);
+                    return caches.delete(key);
+                }
+            }));
+        })
+    );
+    return self.clients.claim();
 });
+
 self.addEventListener('fetch', function (event) {
     event.respondWith(
-        caches.match(event.request)
-            .then(function (response) {
-                // Cache hit - return response
-                if (response) {
+        caches.match(event.request).then(function (resp) {
+            return resp || fetch(event.request).then(function (response) {
+                return caches.open(CACHE_NAME).then(function (cache) {
+                    cache.put(event.request, response.clone());
                     return response;
-                }
-                return fetch(event.request);
-            }
-            )
+                });
+            });
+        })
     );
 });
 self.addEventListener('push', function (event) {
@@ -48,3 +66,59 @@ self.addEventListener('push', function (event) {
         })
     );
 });
+
+var dataLoad =function _dataLoad() {
+    var url= "/data/data.json"
+    return new Promise(function (resolve, reject) {
+        var request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.responseType = 'text/json';
+
+        request.onload = function () {
+            if (request.status == 200) {
+                resolve(request.response);
+            } else {
+                reject(Error('Data didn\'t load successfully; error code:' + request.statusText));
+            }
+        };
+
+        request.onerror = function () {
+            reject(Error('There was a network error.'));
+        };
+
+        request.send();
+    });
+}
+
+function imgLoad(url) {
+    return new Promise(function (resolve, reject) {
+        var request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.responseType = 'blob';
+
+        request.onload = function () {
+            if (request.status == 200) {
+                resolve(request.response);
+            } else {
+                reject(Error('Image didn\'t load successfully; error code:' + request.statusText));
+            }
+        };
+
+        request.onerror = function () {
+            reject(Error('There was a network error.'));
+        };
+
+        request.send();
+    });
+}
+
+//var body = document.querySelector('body');
+//var myImage = new Image();
+
+//imgLoad('myLittleVader.jpg').then(function (response) {
+//    var imageURL = window.URL.createObjectURL(response);
+//    myImage.src = imageURL;
+//    body.appendChild(myImage);
+//}, function (Error) {
+//    console.log(Error);
+//});
