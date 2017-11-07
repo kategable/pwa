@@ -21,25 +21,26 @@
 </head>
 
 <body>
-    <header>
-        <h1>PWA</h1>
-    </header>
-    <main>
+    <div id="app">
+        <header>
+            <h1  style="width:350px;">PWA</h1>
+            <h2 style="float: right">Cart:{{ items.length }}</h2>
+        </header>
+        <main>
 
-        <p>Let's go shopping!</p>
+            <p>Let's go shopping!</p>
 
-        <div id="app">
-
-
-            <ul>
-                <li v-for="item in products">
-                    <small> {{ item.productName }}</small>
-                    <img v-bind:src="item.image" />
-                    <button v-on:click="greet">Add to cart</button>
-                </li>
-            </ul>
-        </div>
-    </main>
+            <div>
+                <ul>
+                    <li v-for="item in products">
+                        <small> {{ item.productName }}</small>
+                        <img v-bind:src="item.image" />
+                        <button v-on:click="addtoCart">Add to cart</button>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
     <footer>
         <small>Image created by ...</small>
     </footer>

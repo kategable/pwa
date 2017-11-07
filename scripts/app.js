@@ -3,14 +3,13 @@
     data: {
         message: 'Hello Vue!',
         items: [
-            { message: 'Foo' },
-            { message: 'Bar' }
+           
         ],
         products: []
     },
     methods: {
-        greet: function () {
-            this.items.push({ message: this.message })
+        addtoCart: function (item) {
+            this.items.push(item)
         },
         
 

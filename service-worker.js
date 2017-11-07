@@ -11,7 +11,8 @@ var urlsToCache = [
     '/pwa/favicon.ico',
     '/pwa/scripts/app.js',
     'https://unpkg.com/vue',
-    '/pwa/data/data.json'
+    '/pwa/data/data.json',
+    'https://code.jquery.com/jquery-3.2.1.min.js'
 ];
  
 
@@ -67,28 +68,6 @@ self.addEventListener('push', function (event) {
     );
 });
 
-var dataLoad =function _dataLoad() {
-    var url= "/data/data.json"
-    return new Promise(function (resolve, reject) {
-        var request = new XMLHttpRequest();
-        request.open('GET', url);
-        request.responseType = 'text/json';
-
-        request.onload = function () {
-            if (request.status == 200) {
-                resolve(request.response);
-            } else {
-                reject(Error('Data didn\'t load successfully; error code:' + request.statusText));
-            }
-        };
-
-        request.onerror = function () {
-            reject(Error('There was a network error.'));
-        };
-
-        request.send();
-    });
-}
 
 function imgLoad(url) {
     return new Promise(function (resolve, reject) {
