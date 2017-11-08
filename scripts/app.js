@@ -19,6 +19,8 @@
         var items = localStorage.getItem('cart');
         if (items) {
             this.items = JSON.parse(items);
+            localStorage.setItem('cart', JSON.stringify(this.items));
+
             notifyMe("you have cart items")
 
         }
@@ -47,7 +49,7 @@ function notifyMe(msg) {
     // Let's check whether notification permissions have already been granted
     else if (Notification.permission === "granted") {
         // If it's okay let's create a notification
-        var notification = new Notification(msg);
+        var notification = new Notification(msg, { icon:"/pwa/apple-touch-icon.png", tag:'cart'});
     }
 
     // Otherwise, we need to ask the user for permission
@@ -55,7 +57,8 @@ function notifyMe(msg) {
         Notification.requestPermission(function (permission) {
             // If the user accepts, let's create a notification
             if (permission === "granted") {
-                var notification = new Notification(msg);
+                var notification = new Notification(msg, { icon: "/pwa/apple-touch-icon.png", tag: 'cart'});
+
             }
         });
     }
