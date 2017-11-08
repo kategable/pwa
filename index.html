@@ -54,7 +54,7 @@
                 <li class="list-group-item">
                     <img class="img-rounded img-thumbnail" v-bind:src="item.image" />
                     <small> {{ item.productName }}</small>
-                    <button v-on:click="addtoCart">Add to cart</button>
+                    <button v-on:click="addtoCart(item)">Add to cart</button>
 
                 </li>
 
