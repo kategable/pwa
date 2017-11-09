@@ -42,8 +42,12 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li v-on:click="signin"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                 
+                            <li  ><a v-on:click="signin" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li   ><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    
+                            <!--<li ><a href="#"><span class="glyphicon glyphicon-log-in"></span> Hello {{user.displayName}}</a></li>-->
+
                             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Cart :{{items.length}}</a></li>
                         </ul>
                     </div>
@@ -98,8 +102,8 @@
         };
         firebase.initializeApp(config);
     </script>
-    
- 
+
+
 
     <script>
         $(document).ready(function () {
