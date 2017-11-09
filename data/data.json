@@ -1,15 +1,17 @@
 ﻿[
-    {
-       "image":"https://webobjects2.cdw.com/is/image/CDW/4427231?$product_250$",
-        "productName": "HP EliteBook 840 G4 - 14'' - Core i5 7200U - 8 GB RAM - 256 GB SSD - US",
-        "availability": "In Stock",
-        "price": "$1,117.99"
-    },
-    {
-        "image": "https://webobjects2.cdw.com/is/image/CDW//3912999?$product_250$",
-        "productName": "HP SB 840 G3 I7-6600U 256GB 8GB W7P",
-        "availability": "In Stock",
-        "price": "$1,665.99"
-    }
+  {
+    "id": "1" ,
+    "image": "https://webobjects2.cdw.com/is/image/CDW/4427231?$product_250$",
+    "productName": "HP EliteBook 840 G4 - 14'' - Core i5 7200U - 8 GB RAM - 256 GB SSD - US",
+    "availability": "In Stock",
+    "price": "$1,117.99"
+  },
+  {
+    "id": "2",
+    "image": "https://webobjects2.cdw.com/is/image/CDW//3912999?$product_250$",
+    "productName": "HP SB 840 G3 I7-6600U 256GB 8GB W7P",
+    "availability": "In Stock",
+    "price": "$1,665.99"
+  }
     
 ]

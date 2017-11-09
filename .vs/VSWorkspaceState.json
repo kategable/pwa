@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\scripts"
   ],
+  "SelectedNode": "\\service-worker.js",
   "PreviewInSolutionExplorer": false
 }

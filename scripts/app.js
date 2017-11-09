@@ -1,46 +1,55 @@
-﻿var app6 = new Vue({
+﻿var app = new Vue({
     el: '#app',
     data: {
         message: 'Hello Vue!',
         items: [
-           
         ],
         products: []
     },
     methods: {
-        addtoCart: function (item) {
-            this.items.push(item)
-            localStorage.setItem('cart', JSON.stringify(this.items));
+        addtoCart: function(item) {
+            // localStorage.setItem('cart', JSON.stringify(this.items));
+            localDB.addObject("cart", item, 'id').then(function() {
+                app.items.push(item)
+            },function() {
+                alert("didnt add")
+            });
+
         },
-        
+
 
     },
-    mounted: function () {
-        var items = localStorage.getItem('cart');
-        if (items) {
-            this.items = JSON.parse(items);
-            localStorage.setItem('cart', JSON.stringify(this.items));
+    mounted: function() {
+        var items = [];
+        localDB.getAll('cart').then(function(res) {
+                items = res;
 
-            notifyMe("you have cart items")
+                if (items.length>0) {
+                    app.items =items;
+                    showNotification("you have cart items",'cart')
 
-        }
+                }
 
-        var url = "/pwa/data/data.json"
-        var promise = Promise.resolve($.getJSON(url))
-        promise.then(function (response, statusText, xhrObj) {
-            app6.products = response;
-             
-        }, function (xhrObj, textStatus, err) {
-            console.log(err);
-        })
-
-
+                var url = "/pwa/data/data.json"
+                var promise = Promise.resolve($.getJSON(url))
+                promise.then(function(response, statusText, xhrObj) {
+                        app.products = response;
+                    },
+                    function(xhrObj, textStatus, err) {
+                        console.log(err);
+                    });
+            }),
+            function(xhrObj, textStatus, err) {
+                console.log(err);
+            };
     }
-})
+
+
+});
 
 
 
-function notifyMe(msg) {
+function notifyMe(title) {
     // Let's check if the browser supports notifications
     if (!("Notification" in window)) {
         alert("This browser does not support desktop notification");
@@ -49,7 +58,12 @@ function notifyMe(msg) {
     // Let's check whether notification permissions have already been granted
     else if (Notification.permission === "granted") {
         // If it's okay let's create a notification
-        var notification = new Notification(msg, { icon:"/pwa/apple-touch-icon.png", tag:'cart'});
+      //  var notification = new Notification(title, { icon: "/pwa/apple-touch-icon.png", tag: 'cart' });
+        self.registration.showNotification(title, {
+            body: body,
+            icon: "/pwa/apple-touch-icon.png",
+            tag: 'cart'
+        })
     }
 
     // Otherwise, we need to ask the user for permission
@@ -57,8 +71,11 @@ function notifyMe(msg) {
         Notification.requestPermission(function (permission) {
             // If the user accepts, let's create a notification
             if (permission === "granted") {
-                var notification = new Notification(msg, { icon: "/pwa/apple-touch-icon.png", tag: 'cart'});
-
+                self.registration.showNotification(title, {
+                    body: body,
+                    icon: "/pwa/apple-touch-icon.png",
+                    tag: 'cart'
+                })
             }
         });
     }

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CDW</title>
+    <title>PWA</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/pwa/styles/main.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">CDW</a>
+                        <a class="navbar-brand" href="#">PWA</a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
@@ -64,19 +64,22 @@
     <footer>
         <small>Image created by ...</small>
     </footer>
-    <script>
+    <!--<script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
                 .register('/pwa/service-worker.js')
                 .then(function () { console.log("Service Worker Registered"); });
         }
-    </script>
+    </script>-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous">
 
     </script>
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript" src="/pwa/scripts/localDB.js"></script>
+
+    <script type="text/javascript" src="/pwa/scripts/main.js"></script>
     <script type="text/javascript" src="/pwa/scripts/app.js"></script>
 
 

@@ -2,7 +2,7 @@
 // Register Service Worker
 
 if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+  navigator.serviceWorker.register('/pwa/service-worker.js').then(function(registration) {
     // Registration was successful
   }).catch(function(err) {
     // registration failed :(
@@ -12,8 +12,8 @@ if('serviceWorker' in navigator) {
 
 // Setup Push notifications
 
-var pushButton = document.querySelector('.js-push-button');
-pushButton.addEventListener('click', subscribe);
+//var pushButton = document.querySelector('.js-push-button');
+//pushButton.addEventListener('click', subscribe);
 
 function subscribe() {
   // Disable the button so it can't be changed while  
@@ -52,3 +52,17 @@ function subscribe() {
   });
 }
 
+function showNotification(title,tag) {
+    Notification.requestPermission(function (result) {
+        if (result === 'granted') {
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.showNotification(title, {
+                    body: 'Buzz! Buzz!',
+                    icon: "/pwa/apple-touch-icon.png",
+                    vibrate: [200, 100, 200, 100, 200, 100, 200],
+                    tag: tag
+                });
+            });
+        }
+    });
+}
