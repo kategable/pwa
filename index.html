@@ -42,7 +42,7 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li v-on:click="signin"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Cart :{{items.length}}</a></li>
                         </ul>
@@ -85,7 +85,21 @@
 
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
-
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCQyWJovyHxa_wBotNc_d0KP6reHq2dJyE",
+            authDomain: "myfirstpwa-983d3.firebaseapp.com",
+            databaseURL: "https://myfirstpwa-983d3.firebaseio.com",
+            projectId: "myfirstpwa-983d3",
+            storageBucket: "myfirstpwa-983d3.appspot.com",
+            messagingSenderId: "677668180349"
+        };
+        firebase.initializeApp(config);
+    </script>
+    
+ 
 
     <script>
         $(document).ready(function () {
