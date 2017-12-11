@@ -23,7 +23,7 @@ var localDB = (function () {
             db.onerror = function (event) {
                 // Generic error handler for all errors targeted at this database's
                 // requests!
-                alert("Database error: " + event.target.message);
+                notifyMe("Database error " , event.target.error.message);
                 reject(event.target.errorCode);
 
             };

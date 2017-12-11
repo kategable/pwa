@@ -1,17 +1,60 @@
-﻿[
-  {
-    "id": "1" ,
-    "image": "https://webobjects2.cdw.com/is/image/CDW/4427231?$product_250$",
-    "productName": "HP EliteBook 840 G4 - 14'' - Core i5 7200U - 8 GB RAM - 256 GB SSD - US",
-    "availability": "In Stock",
-    "price": "$1,117.99"
-  },
-  {
-    "id": "2",
-    "image": "https://webobjects2.cdw.com/is/image/CDW//3912999?$product_250$",
-    "productName": "HP SB 840 G3 I7-6600U 256GB 8GB W7P",
-    "availability": "In Stock",
-    "price": "$1,665.99"
-  }
-    
-]
+﻿  [
+    {
+      "id": "1" ,
+      "image": "https://webobjects2.cdw.com/is/image/CDW//3912999?$product_search_result$",
+      "productName": "HP EliteBook",
+      "category": "notebooks",
+      "price": "$1,001.99"
+    },
+    {
+      "id": "2",
+      "image": "https://webobjects2.cdw.com/is/image/CDW/4427231?$product_search_result$",
+      "productName": "HP Chromebook",
+     "category": "notebooks",
+      "price": "$1,002.99"
+    }, {
+      "id": "3" ,
+      "image": "https://webobjects2.cdw.com/is/image/CDW/3834848?$product_search_result$",
+      "productName": "HP Probook",
+      "category": "notebooks",
+      "price": "$1,003.99"
+    },
+    {
+      "id": "4",
+      "productName": "HP SB 840 G3",   
+      "image": "https://webobjects2.cdw.com/is/image/CDW/4168571?$product_search_result$",
+      
+     "category": "notebooks",
+      "price": "$1,004.99"
+    },  {
+      "id": "5" ,
+      "productName": "Acer Tablet",
+      "image": "https://webobjects2.cdw.com/is/image/CDW/4463363?$product_search_result$",
+      
+      "category": "tablet",
+      "price": "$1,005.99"
+    },
+    {
+      "id": "6",
+      "productName": "Apple MacBook Pro",  
+      "image": "https://webobjects2.cdw.com/is/image/CDW/4648183?$product_search_result$",
+      
+     "category": "notebook",
+      "price": "$1,006.99"
+    }, {
+      "id": "7" ,
+      "productName": "ASUS Transformer Mini",
+      "image": "https://webobjects2.cdw.com/is/image/CDW/4295855?$product_search_result$",
+      "category": "notebook",
+      "price": "$1,007.99"
+    },
+    {
+      "id": "8",
+      "productName": "Fujitsu Lifebook",
+      "image": "https://webobjects2.cdw.com/is/image/CDW/4876067?$product_search_result$",
+      "category": "tablet",
+      "price": "$1,008.99"
+    }
+      
+      
+  ]   
