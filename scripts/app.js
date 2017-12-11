@@ -68,10 +68,12 @@
                     },
                     function(xhrObj, textStatus, err) {
                         console.log(err);
+                        alert(textStatus)
                     });
             }),
             function(xhrObj, textStatus, err) {
                 console.log(err);
+                alert(textStatus)
             };
     }
 
