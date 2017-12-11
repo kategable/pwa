@@ -5,9 +5,12 @@
     data: {
         message: 'Hello Vue!',
         items: [],
-        products: []
+        products: [],
+        isOn: true,
+        buttonText:'Subscribe'
     },
     methods: {
+       
         addtoCart: function (item) {
             // localStorage.setItem('cart', JSON.stringify(this.items));
             localDB.addObject("cart", item, 'id').then(function () {
@@ -50,7 +53,7 @@
 
     },
     mounted: function () {
-
+      
         localDB.getAll('cart').then(function (res) {
             var items = res;
 

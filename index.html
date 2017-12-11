@@ -43,8 +43,8 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                  
-                            <li  ><a v-on:click="signin" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li   ><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <!-- <li  ><a v-on:click="subscribe" href=""><span class="glyphicon glyphicon-user"></span>Subscribe</a></li> -->
+                            <li   ><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     
                             <!--<li ><a href="#"><span class="glyphicon glyphicon-log-in"></span> Hello {{user.displayName}}</a></li>-->
 
@@ -53,6 +53,8 @@
                     </div>
                 </div>
             </nav>
+  
+            <button onclick="buttonClick()" class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect primary btn">Enable Push Messaging</button>
             <p>Let's go shopping!</p>
             <ul class="list-group" v-for="item in products">
                 <li class="list-group-item">
@@ -63,6 +65,7 @@
                 </li>
 
             </ul>
+            <code class="js-subscription-json"></code>
         </main>
     </div>
     <footer>

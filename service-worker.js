@@ -56,7 +56,7 @@ self.addEventListener('fetch', function (event) {
 });
 self.addEventListener('push', function (event) {
     var title = 'Yay a message.';
-    var body = 'We have received a push message.';
+    var body = event.data.text();
     var icon = '/images/smiley.svg';
     var tag = 'simple-push-example-tag';
     event.waitUntil(
@@ -67,7 +67,20 @@ self.addEventListener('push', function (event) {
         })
     );
 });
-
+self.addEventListener('pushsubscriptionchange', function(event) {
+    console.log('[Service Worker]: \'pushsubscriptionchange\' event fired.');
+    const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+    event.waitUntil(
+      self.registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: applicationServerKey
+      })
+      .then(function(newSubscription) {
+        // TODO: Send to application server
+        console.log('[Service Worker] New subscription: ', newSubscription);
+      })
+    );
+  });
 
 function imgLoad(url) {
     return new Promise(function (resolve, reject) {
