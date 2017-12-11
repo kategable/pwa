@@ -4,8 +4,7 @@
     userLoaded:false,
     data: {
         message: 'Hello Vue!',
-        items: [
-        ],
+        items: [],
         products: []
     },
     methods: {

@@ -1,26 +1,33 @@
 var localDB = (function () {
     var module = {};
+    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
     var dbPromise = new Promise(function (fulfill, reject) {
         const dbName = "myPWATestDB";
         const dbVersion = 1;
-        var request = indexedDB.open(dbName, dbVersion);
-        request.onerror = function (event) {
+        var dataBase  = indexedDB.open(dbName, dbVersion);
+        dataBase.onerror = function (event) {
             reject(event.target.errorCode);
 
             //alert("Why didn't you allow my web app to use IndexedDB?!");
         };
-        request.onsuccess = function (event) {
-            db = event.target.result;
+        dataBase.onsuccess = function (event) { 
+            db = event.target.result; 
             fulfill(db);
 
             db.onerror = function (event) {
                 // Generic error handler for all errors targeted at this database's
                 // requests!
-                //  alert("Database error: " + event.target.errorCode);
+              alert("Database error: " + event.target.message);
                 reject(event.target.errorCode);
 
             };
+        };
+        dataBase.onupgradeneeded = function (e) {
+            
+                var active = dataBase.result;                        
+                var objectDb = active.createObjectStore("cart", {keyPath: 'id', autoIncrement : true });
+            
         };
         //request.onupgradeneeded = function (event) {
         //    // return;
@@ -54,7 +61,7 @@ var localDB = (function () {
         //        }
         //    };
         //};
-    })
+    });
 
 
     module.addObject = function (objectName, data, keyName) {
@@ -110,8 +117,8 @@ var localDB = (function () {
 
         return new Promise(function (fulfill, reject) {
             dbPromise.then(function (db) {
-
-                var request = db.transaction([objectName]).objectStore(objectName).get(key);
+                var transaction = db.transaction([objectName], "readwrite");                
+                var request = transaction.objectStore(objectName).get(key);
                 request.onsuccess = function (event) {
                     try {
                         fulfill(event.target.result);
@@ -131,8 +138,8 @@ var localDB = (function () {
     module.getAll = function (objectName) {
         return new Promise(function (fulfill, reject) {
             dbPromise.then(function (db) {
-
-                var request = db.transaction([objectName]).objectStore(objectName).openCursor();//.onsuccess = function (event) {              
+                var transaction = db.transaction([objectName], "readwrite");        
+                var request = transaction.objectStore(objectName).openCursor();//.onsuccess = function (event) {              
                 request.onsuccess = function (event) {
                     try {
                         var items = [];
