@@ -12,7 +12,7 @@ if ('serviceWorker' in navigator) {
     // Registration was successful
   }).catch(function (err) {
     // registration failed :(
-    pushButton.textContent = 'Push Not Supported';
+    pushButton.innerHTML  = 'Push Not Supported';
     console.log('ServiceWorker registration failed: ', err);
   });
 }
@@ -27,25 +27,19 @@ if ('serviceWorker' in navigator) {
   }
 };
 
-pushButton.addEventListener('click', function () {
-  pushButton.disabled = true;
-  if (isSubscribed) {
-    unsubscribeUser();
-  } else {
-    subscribeUser();
-  }
-}, false);
+ 
 function updateBtn() {
   if (Notification.permission === 'denied') {
-    pushButton.textContent = 'Push Messaging Blocked.';
+  
+    pushButton.innerHTML  = 'Push Messaging Blocked.';
     pushButton.disabled = true;
     updateSubscriptionOnServer(null);
     return;
   }
   if (isSubscribed) {
-    pushButton.textContent = 'Disable Push Messaging';
+    pushButton.innerHTML  = 'Disable Push Messaging';
   } else {
-    pushButton.textContent = 'Enable Push Messaging';
+    pushButton.innerHTML  = 'Enable Push Messaging';
   }
 
   pushButton.disabled = false;
@@ -78,7 +72,7 @@ function subscribeUser() {
   })
     .then(function (subscription) {
       console.log('User is subscribed.');
-
+      pushButton.textContent = 'Unsubscribe';
       updateSubscriptionOnServer(subscription);
 
       isSubscribed = true;
@@ -135,7 +129,8 @@ function updateSubscriptionOnServer(subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 
   } else {
-
+    subscriptionJson.textContent = 'not subscribed';
+    
   }
 }
 

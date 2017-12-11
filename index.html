@@ -1,7 +1,7 @@
-﻿
+﻿<!DOCTYPE html>
 
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>PWA</title>
     <meta charset="UTF-8">
@@ -23,6 +23,10 @@
 </head>
 
 <body>
+    <div>
+        <button onclick="buttonClick()" class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect primary btn">Enable Push Messaging</button>
+        <code class="js-subscription-json"></code>
+    </div>
     <div id="app">
 
         <main>
@@ -38,23 +42,30 @@
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/pwa/">Home</a></li>
+                            <li class="active">
+                                <a href="/pwa/">Home</a>
+                            </li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                 
+
                             <!-- <li  ><a v-on:click="subscribe" href=""><span class="glyphicon glyphicon-user"></span>Subscribe</a></li> -->
-                            <li   ><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    
+                            <li>
+                                <a href="">
+                                    <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                            </li>
+
                             <!--<li ><a href="#"><span class="glyphicon glyphicon-log-in"></span> Hello {{user.displayName}}</a></li>-->
 
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Cart :{{items.length}}</a></li>
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-log-in"></span> Cart :{{items.length}}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-  
-            <button onclick="buttonClick()" class="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect primary btn">Enable Push Messaging</button>
+
             <p>Let's go shopping!</p>
             <ul class="list-group" v-for="item in products">
                 <li class="list-group-item">
@@ -65,9 +76,10 @@
                 </li>
 
             </ul>
-            <code class="js-subscription-json"></code>
+
         </main>
     </div>
+
     <footer>
         <small>Image created by ...</small>
     </footer>
@@ -78,11 +90,10 @@
                 .then(function () { console.log("Service Worker Registered"); });
         }
     </script>-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
 
-    </script>
+        </script>
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
     <script type="text/javascript" src="/pwa/scripts/localDB.js"></script>
 
@@ -114,4 +125,5 @@
         });
     </script>
 </body>
+
 </html>
