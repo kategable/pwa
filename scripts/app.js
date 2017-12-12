@@ -59,7 +59,7 @@
 
             if (items.length > 0) {
                 app.items = items;
-                notifyMe("you have cart items", 'cart')
+                notifyMe('you have ' + items.length + ' cart items', 'cart')
 
             }
 
