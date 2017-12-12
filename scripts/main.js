@@ -3,7 +3,7 @@
 //https://web-push-codelab.glitch.me/
 var swRegistration;
 var isSubscribed;
-var applicationServerPublicKey = urlB64ToUint8Array("BOqVGmBuldmLTBN-sQqEt5dqB-G_BrBTJski2_85CJh-4PyiGUi-5jx7LmcyhlDcFi5JY3Gnkg7LRsHoO5vh1ZM");
+var applicationServerPublicKey = urlB64ToUint8Array("BHJsdnOuZNPqmee9cuvQpddXJ2bM0fLdWyM5tHuomEXBJ8EDmLhP8HXhLX6YfPFTKOeaUmH3ejER_em01-ijrJk");
 const pushButton = document.querySelector('.js-push-btn');
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/pwa/service-worker.js').then(function (registration) {
